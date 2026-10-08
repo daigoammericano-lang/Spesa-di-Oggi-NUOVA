@@ -516,6 +516,7 @@ const SPELLING_CORRECTIONS={
   "broccoli": "Broccoli",
   "cavolfiore": "Cavolfiore",
   "finocchi": "Finocchi",
+  "fiocchi": "Fiocchi",
   "funghi": "Funghi",
   "fungo": "Fungo",
   "piselli": "Piselli",
@@ -687,6 +688,7 @@ function resolveAlias(name){
     return clean.charAt(0).toUpperCase()+clean.slice(1).toLowerCase();
   }
 
+    const directKey=normalizeForMatch(clean); if(Object.hasOwn(SPELLING_CORRECTIONS,directKey))return SPELLING_CORRECTIONS[directKey];
   const out=fuzzyAlias(clean); if(out!==clean)return out;
   const corrected=correctCommonSpelling(clean);
   const out2=fuzzyAlias(corrected); if(out2!==corrected)return out2;
